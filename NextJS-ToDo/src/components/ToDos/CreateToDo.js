@@ -1,21 +1,33 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import {useForm} from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 export default function CreateToDo() {
-  const route = useRouter();
+  const router = useRouter();
   const {
-      id,
-      title,
-      dueDate,
-      register,
-      handleSubmit,
-      formState: {errors}
+    register,
+    handleSubmit,
+    formState: {errors}
   } = useForm();
-  const onSubmit = data => {
-      console.log('data', data);
-      route.push('/todos');
+  const onSubmit = async (data) => {
+    const res = await fetch(
+      'https://coding-fairy.com/api/mock-api-resources/1715945679/todos',
+      {
+        headers : {
+          'Content-Type' : 'application/json',
+          'Accept' : 'application/json'
+        },
+        method : 'POST',
+        body : JSON.stringify(data)
+      }
+    );
+
+    if(!res.ok) {
+      throw new Error('Failed to store data!!');
+    }
+
+    router.push('/todos');
   }
     
   return (

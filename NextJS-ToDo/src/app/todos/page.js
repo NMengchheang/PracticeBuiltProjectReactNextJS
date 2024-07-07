@@ -5,6 +5,5 @@ export default function ToDoListPage() {
         <div className="overflow-x-auto">
             <ToDoList />
         </div>
-
     );
 }

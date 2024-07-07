@@ -3,7 +3,9 @@
 import Link from 'next/link';
 
 async function getToDoData() {
-    const res = await fetch('https://coding-fairy.com/api/mock-api-resources/1715945679/todos');
+    const res = await fetch('https://coding-fairy.com/api/mock-api-resources/1715945679/todos', {
+        cache : 'no-store'
+    });
 
     if(!res.ok) {
         throw new Error('Failed to fetch data!!');
