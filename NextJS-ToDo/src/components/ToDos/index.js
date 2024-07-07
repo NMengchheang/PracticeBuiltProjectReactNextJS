@@ -1,11 +1,20 @@
-"use client";
 
-import useToDoContext from '@/contexts/ToDoContext';
+// import useToDoContext from '@/contexts/ToDoContext';
 import Link from 'next/link';
-import { useState } from 'react'
 
-export default function ToDoList() {
-    const { todos } = useToDoContext();
+async function getToDoData() {
+    const res = await fetch('https://coding-fairy.com/api/mock-api-resources/1715945679/todos');
+
+    if(!res.ok) {
+        throw new Error('Failed to fetch data!!');
+    }
+
+    return res.json();
+}
+
+export default async function ToDoList() {
+    const data = await getToDoData();
+    const todos = data;
   return (
     <div className='pt-5'>
         <table>
@@ -33,10 +42,10 @@ export default function ToDoList() {
             <tbody>
                 {
                     todos.map(item => (
-                        <tr>
+                        <tr key={item.id}>
                             <td className='px-6 py-3 font-medium capitalize text-gray-500'>{item.id}</td>
-                            <td className='px-6 py-3 font-medium capitalize text-gray-500'>eatting</td>
-                            <td className='px-6 py-3 font-medium capitalize text-gray-500'>06-07-2024</td>
+                            <td className='px-6 py-3 font-medium capitalize text-gray-500'>{item.title}</td>
+                            <td className='px-6 py-3 font-medium capitalize text-gray-500'>{item.dueDate}</td>
                             <td className='px-6 uppercase'>
                                 <Link href=""
                                     type="button" 
