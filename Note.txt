@@ -1,0 +1,19 @@
+Create file in folder that file named page.js and page.js is pre-comple to static HTML and pre-comple on server-side
+All component created in NextJS is server-side
+
+map is Global state variable ចេញពីuseToDoContext();
+
+
+to use useRouter
++ import {useRouter} from "next/navigation";
++ const router = useRouter(); 	declare in export default function ...(){}
++ during call router to use on submit => router.push('/...');
+
+method of call API
+_ ការហៅAPIតាមFrontentសុទ្ធក៏បាន
+_ Route handler
+_ Action server
+What is hight peration ?
+
+
+On tuesday I must be ask teacher about "router.refresh()".

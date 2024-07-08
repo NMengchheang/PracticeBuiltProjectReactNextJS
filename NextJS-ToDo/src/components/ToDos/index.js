@@ -1,23 +1,29 @@
-
+'use client';
 // import useToDoContext from '@/contexts/ToDoContext';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-async function getToDoData() {
-    const res = await fetch('https://coding-fairy.com/api/mock-api-resources/1715945679/todos', {
-        cache : 'no-store'
-    });
+export default async function ToDoList({items}) {
+    const router = useRouter();
+    const todos  = items;
 
-    if(!res.ok) {
-        throw new Error('Failed to fetch data!!');
+    const onDelete = async (id) => {
+        const res = await fetch(
+            `https://coding-fairy.com/api/mock-api-resources/1715945679/todos/${id}`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                method: 'DELETE'
+            }
+        );
+        if (!res.ok) {
+            throw new Error('Failed to delete data')
+        }
+        router.refresh();
     }
-
-    return res.json();
-}
-
-export default async function ToDoList() {
-    const data = await getToDoData();
-    const todos = data;
-  return (
+    return (
     <div className='pt-5'>
         <table>
             <thead className='bg-gray-100'>
@@ -49,7 +55,7 @@ export default async function ToDoList() {
                             <td className='px-6 py-3 font-medium capitalize text-gray-500'>{item.title}</td>
                             <td className='px-6 py-3 font-medium capitalize text-gray-500'>{item.dueDate}</td>
                             <td className='px-6 uppercase'>
-                                <Link href=""
+                                <Link href={`/todos/${item.id}`}
                                     type="button" 
                                     className="px-4 py-2
                                         bg-yellow-500 
@@ -61,7 +67,7 @@ export default async function ToDoList() {
                                         focus:ring-offset-2 
                                         focus:ring-yellow-500"> Edit
                                 </Link>
-                                <Link href=""
+                                <button onClick={() => onDelete(item.id)}
                                     type="button" 
                                     className="px-4 py-2
                                         bg-red-500 
@@ -72,7 +78,7 @@ export default async function ToDoList() {
                                         focus:ring-2 
                                         focus:ring-offset-2 
                                         focus:ring-red-500"> Delete
-                                </Link>
+                                </button>
                             </td>
                         </tr>
                     ))
