@@ -14,6 +14,28 @@ _ ការហៅAPIតាមFrontentសុទ្ធក៏បាន
 _ Route handler
 _ Action server
 What is hight peration ?
+============================
+Partial Prerendering
+_ What is prerendering?
+ + When a server receives a request, it renders the page and sends the result back to the client. If a new request comes in, the server renders the page again. We call this end-of the spectrum dynamic rendering because the page is rendered on-demand for every incoming request.
+Pages that personalize content based on runtime information or frequently updated data require this per-request rendering because each render produces a different result.
+
+For example, a company's blog might produce the same result every time it's rendered.
+- We can optimize this subset of pages by doing the rendering work ahead of time.
+- We call this end-of-the-spectrum prerendering or static rendering.
+Instead of dynamically rendering the page on every request at runtime, we can prerender the page once at build time and push the result to a content Delivery Network.When a prerended page is requested, the static result is served from an Edge Region close to the user rather than a runtime server.
+
++++ Server-side rendering, Static Site Generation, Client-side rendering, or Backend API Endpoints
+
+++ Next.js grew in popularity partly because it offered more rendering diversity.
+We can't prerender a page that depends on runtime information before receiving the request that contains that information.
+
+It allows us to combine the benefits and abilities of prerendering and dynamic rendering on the same page.
+
+How does it work?
+As a reminder, Next.js currently prerenders a page at build time unless it uses dynamic APIs like incoming request headers or uncached data requests. and opt the whole page into dynamic rendering at runtime. 
 
 
-On tuesday I must be ask teacher about "router.refresh()".
+
+[+] In a static route, components are rendered on the server at build time. The result of the work is cached are reused on subsequent requests.
+[+] In a dynamic route, components are rendered on the server at request time.
