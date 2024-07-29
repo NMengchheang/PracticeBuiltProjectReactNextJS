@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #000300;
+}
+
+/* Scoll Stuff */
+.scroll-down .navigation {
+    transform: translate3d(0, -100%, 0);
+}
+
+.scroll-up .navigation {
+    filter: drop-shadow(0 -10px rgb(170, 170, 170));
+}

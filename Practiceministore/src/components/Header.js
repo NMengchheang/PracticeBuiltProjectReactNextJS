@@ -37,34 +37,34 @@ export default function Header() {
                             </li>
                             <li className="nav-item">
                                 <div className="user-items ps-5">
-                                <ul className="d-flex justify-content-end list-unstyled">
-                                    <li className="search-item pe-3">
-                                        <a href="#" className="search-button">
-                                            <svg className="search">
-                                            <use xlinkHref="#search" />
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    
-                                    <li>
-                                        <a href="cart.html">
-                                            <svg className="cart">
-                                            <use xlinkHref="#cart" />
-                                            </svg>
-                                        </a>
-                                    </li>
+                                    <ul className="d-flex justify-content-end list-unstyled">
+                                        <li className="search-item pe-3">
+                                            <a href="#" className="search-button">
+                                                <svg className="search">
+                                                <use xlinkHref="#search" />
+                                                </svg>
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a href="cart.html">
+                                                <svg className="cart">
+                                                <use xlinkHref="#cart" />
+                                                </svg>
+                                            </a>
+                                        </li>
 
-                                    <li className="pe-3">
-                                        <a href="#" style={{paddingLeft: '1rem'}}>
-                                            login
-                                        </a>
-                                    </li>
-                                    <li className="pe-3">
-                                        <a href="#">
-                                            Sign Up
-                                        </a>
-                                    </li>
-                                </ul>
+                                        <li className="pe-3">
+                                            <a href="#" style={{paddingLeft: '1rem'}}>
+                                                login
+                                            </a>
+                                        </li>
+                                        <li className="pe-3">
+                                            <a href="#">
+                                                Sign Up
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </li>
                         </ul>
