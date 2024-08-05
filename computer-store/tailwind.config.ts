@@ -19,6 +19,7 @@ import type { Config } from "tailwindcss";
 //   plugins: [],
 // }
 
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -32,8 +33,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      screens: {
+        'xs': '430px',  // Custom breakpoint for 430px
+      },
     },
   },
   plugins: [],
+  
 };
+
 export default config;
