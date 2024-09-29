@@ -3,7 +3,16 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function MenuLink({item}) {
+// Define an interface for the MenuLink props
+interface MenuLinkProps {
+  item: {
+      path: string;
+      icon: React.ReactNode; // Type for React nodes (could be JSX)
+      title: string;
+  };
+}
+
+export default function MenuLink({item} : MenuLinkProps) {
 
   const pathname = usePathname()
 

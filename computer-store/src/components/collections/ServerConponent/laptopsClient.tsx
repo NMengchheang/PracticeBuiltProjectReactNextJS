@@ -1,7 +1,7 @@
 "use client";
 import { CldImage } from 'next-cloudinary';
 
-export default async function LaptopsClient({ products }: { products: any[] }) {
+export default function LaptopsClient({ products }: { products: any[] }) {
     
     return (
         <>
