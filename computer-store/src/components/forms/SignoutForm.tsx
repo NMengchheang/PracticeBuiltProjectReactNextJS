@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { signOutUser } from "@/app/actions";
 
 
-export default function SignOutForm() {
+export default function LogoutForm() {
     const router = useRouter();
     const onLogout = () => {
         signOutUser().then(() => {

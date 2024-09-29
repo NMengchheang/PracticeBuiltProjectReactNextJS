@@ -1,4 +1,3 @@
-// components/HeaderClient.js
 "use client";
 
 import { usePathname } from 'next/navigation';
@@ -6,11 +5,8 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { IoIosArrowDropdown } from "react-icons/io";
-// import { useRouter } from 'next/navigation';
-// import { signOutUser } from '@/app/actions';
 
-
-const HeaderClient =  ({ sessionuser }) => {
+const HeaderClient =  ( {sessionuser} : { sessionuser: any | null } ) => {
     const pathname = usePathname();
     const [dropdown, setDropdown] = useState(false);
     const [nav, setNav] = useState(false);
@@ -33,7 +29,10 @@ const HeaderClient =  ({ sessionuser }) => {
         { name: "About", href: "/about" },
         { name: "Testing", href: "/Testing" },
         ...(sessionuser
-            ? [{ name: "Logout", href: "/signout"}]
+            ? [
+                { name: "Logout", href: "/signout"},
+                { name: "Deshboard", href: "/dashboard"},
+            ]
             : [
                 { name: "SignIn", href: "/api/auth/signin" },
                 { name: "SignUp", href: "/signup" }
@@ -44,7 +43,7 @@ const HeaderClient =  ({ sessionuser }) => {
     return (
         <div className="navigation fixed w-full top-0 left-0 bg-[#000300] z-9999 transition-custom duration-300 ease-in-out">
             <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
-                <h1 className='w-full text-3xl font-sans font-bold text-[#00df9a]'>Computer<span className='text-white'>Store</span> </h1>
+                <h1 className='w-full text-3xl font-sans font-bold text-[#00df9a]'>Luxury<span className='text-white'>Computer</span> </h1>
                 <ul className='hidden md:flex'>
                     {
                         navLinks.map((link) => {
@@ -150,6 +149,5 @@ const HeaderClient =  ({ sessionuser }) => {
         </div>
     );
 }
-
 
 export default HeaderClient;

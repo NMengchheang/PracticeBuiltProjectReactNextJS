@@ -1,7 +1,8 @@
 
 import type { Metadata } from "next";
-import Hero from "./(HomePage)/Hero";
 import Footer from "@/components/Footer";
+import HeroPage from "./(HomePage)/HeroPage";
+
 
 export const metadata: Metadata = {
   title: "Home-Store",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function Homepage() {
   return (
     <>
-      <Hero />
+      <HeroPage />
       <Footer />
     </>
   )

@@ -1,23 +1,4 @@
 import type { Config } from "tailwindcss";
-// module.exports = {
-//   theme: {
-//     extend: {
-//       zIndex: {
-//         '9999': '9999',
-//       },
-//       transitionProperty: {
-//         'custom': 'all',
-//       },
-//       transitionTimingFunction: {
-//         'ease-in-out': 'ease-in-out',
-//       },
-//       transitionDuration: {
-//         '300': '300ms',
-//       },
-//     },
-//   },
-//   plugins: [],
-// }
 
 
 const config: Config = {
@@ -36,6 +17,27 @@ const config: Config = {
       screens: {
         'xs': '430px',  // Custom breakpoint for 430px
       },
+      boxShadow: {
+        'custom-green': '0 10px 15px -3px rgba(0, 223, 154, 0.4), 0 4px 6px -2px rgba(0, 223, 154, 0.3)',
+      },
+      colors: {
+        'custom-gray': 'rgba(136, 139, 138, 0.2)',
+        'custom-gray-medium': 'rgba(128, 128, 128, 0.75)',
+        
+      },
+      backgroundColor: {
+        'green' : 'rgb(41 212 35)',
+      },
+      flexGrow: {
+        '3': '3',
+      },
+    },
+  },
+  variants: {
+    extend: {
+      boxShadow: ['hover'],
+      scale: ['hover'],
+      backgroundColor: ['hover'],
     },
   },
   plugins: [],

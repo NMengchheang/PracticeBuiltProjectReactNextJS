@@ -8,21 +8,23 @@ const protectedRoutes = [
 ]
 
 const publicRoutes = [
-    '/',
     '/signin'
 ]
+
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
     const session = await auth();
     
-    const isProtectedRoute = protectedRoutes.some((prefix) => request.nextUrl.pathname.startsWith(prefix));
+    const isProtectedRoute = protectedRoutes.some((prefix) => 
+        request.nextUrl.pathname.startsWith(prefix)
+    );
 
     if (!session && isProtectedRoute) {
         return NextResponse.redirect(new URL('/signin', request.nextUrl.origin));
     }
 
     if (session && publicRoutes.includes(request.nextUrl.pathname)) {
-        return NextResponse.redirect(new URL('/backends/dashboard', request.nextUrl.origin));
+        return NextResponse.redirect(new URL('/', request.nextUrl.origin));
     }
 }
 
