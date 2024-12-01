@@ -1,5 +1,5 @@
-import Navbar from "@/UIdashboard/dashboard/navbar/navbar";
-import Sidebar from "@/UIdashboard/dashboard/sidebar/sidebar";
+import Navbar from "./components/navbar/navbar";
+import Sidebar from "./components/sidebar/sidebar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

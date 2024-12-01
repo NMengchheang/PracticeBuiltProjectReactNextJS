@@ -1,7 +1,6 @@
-import Card from "@/UIdashboard/dashboard/card/card";
-import Chart from "@/UIdashboard/dashboard/chart/chart";
-import Rightbar from "@/UIdashboard/dashboard/rightbar/rightbar";
-import Transaction from "@/UIdashboard/dashboard/transactions/transaction";
+import Card from "./components/card/card";
+import Chart from "./components/chart/chart";
+import Transaction from "./components/transactions/transaction";
 
 export default function page() {
   return (

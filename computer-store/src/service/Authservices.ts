@@ -16,6 +16,7 @@ export const {
           clientId: process.env.GOOGLE_CLIENT_ID,
           clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         }),
+
         CredentialsProvider({
             credentials: {
                 email: { label: "Email", type: "text", placeholder: "example@example.com"},
@@ -35,7 +36,6 @@ export const {
                         name: "Fack User"
                     }
                 }
-
                 return user;
             }
         }),

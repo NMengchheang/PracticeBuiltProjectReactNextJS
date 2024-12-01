@@ -1,4 +1,4 @@
-import LaptopsProduct from '@/components/collections/laptops'
+import LaptopsProduct from './laptops'
 import React from 'react'
 
 export default function laptopspage() {
