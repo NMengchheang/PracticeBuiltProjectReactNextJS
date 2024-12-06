@@ -1,13 +1,19 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { PrismaAdapter} from "@auth/prisma-adapter";
+import prisma from "./db";
 
 export const {
-    handlers: {GET, POST}, 
+
+    handlers,
     auth, 
     signIn, 
     signOut
+
 } = NextAuth({
+    adapter: PrismaAdapter(prisma),
     session : {
         strategy: 'jwt',
     },
@@ -17,9 +23,14 @@ export const {
           clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         }),
 
+        GitHubProvider ({
+            clientId: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        }),
+
         CredentialsProvider({
             credentials: {
-                email: { label: "Email", type: "text", placeholder: "example@example.com"},
+                email: { label: "Email", type: "text", placeholder: "example@gmail.com"},
                 password: { label: "Password", type: "password"},
             },
             async authorize(credential, req) {
@@ -44,3 +55,7 @@ export const {
         signIn: '/signin'
     }
 });
+
+// function EmailProvider(arg0: { server: { host: string | undefined; port: string | undefined; auth: { user: string | undefined; pass: string | undefined; }; }; from: string | undefined; }): import("@auth/core/providers").Provider {
+//     throw new Error("Function not implemented.");
+// }

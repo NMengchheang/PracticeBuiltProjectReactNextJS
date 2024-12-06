@@ -4,8 +4,9 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { signInByCredencails } from "@/app/actions";
 import { useRouter } from "next/navigation";
-import { FaGoogle } from "react-icons/fa";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { IoChevronBackOutline } from "react-icons/io5";
+import EmailConfirmationForm from "./EmailConfirmationForm";
 
 export default function SigninForm() {
     const router = useRouter();
@@ -15,6 +16,9 @@ export default function SigninForm() {
 
     const onGoogleSignIn = () => {
         signIn('google');
+    }
+    const onGitHubSignIn = () => {
+        signIn('github');
     }
 
     const onCredentialsSignIn = async () => {
@@ -32,10 +36,7 @@ export default function SigninForm() {
                     {error}
                 </div>
             )}
-            <form
-                action={onCredentialsSignIn} 
-                method="POST"
-            >
+            {/* <form action={onCredentialsSignIn} method="POST" >
                 <h2 className="text-2xl font-semibold text-center">Sign In</h2>
                 <p className="text-center text-gray-500 mb-4">Welcome back! Please log in to your account.</p>
                 <div className="mb-5">
@@ -44,7 +45,7 @@ export default function SigninForm() {
                     </label>
                     <input 
                         onChange={(e:any) => setEmail(e.target.value)}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" 
+                        className="shadow appearance-none border border-sky-300 rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" 
                         placeholder="example@example.com"
                     />
                 </div>
@@ -54,8 +55,8 @@ export default function SigninForm() {
                     </label>
                     <input 
                         onChange={(e:any) => setPassword(e.target.value)} 
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" 
-                        placeholder="* * * * * * * *"
+                        className="shadow appearance-none  border border-sky-300 rounded-xl w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" 
+                        placeholder="-- -- -- -- -- --"
                     />
                 </div>
                 <div className="flex items-center justify-between">
@@ -71,7 +72,9 @@ export default function SigninForm() {
                         Forgot Password?
                     </a>
                 </div>
-            </form>
+            </form> */}
+
+            <EmailConfirmationForm />
 
             <div className="relative flex items-center justify-center my-6">
                 <div className="absolute inset-0 flex items-center">
@@ -81,14 +84,22 @@ export default function SigninForm() {
                     OR
                 </span>
             </div>
-
-            <button
-                onClick={onGoogleSignIn}
-                className="w-full flex items-center justify-center gap-2 bg-white text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-gray-100 transition duration-300 border border-gray-300"
-            >
-                <FaGoogle />
-                Continue with Google
-            </button>
+            <div>
+                <button
+                    onClick={onGoogleSignIn}
+                    className="w-full flex items-center justify-center gap-2 bg-white text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-gray-100 transition duration-300 border border-gray-300"
+                >
+                    <FaGoogle />
+                    Continue with Google
+                </button>
+                <button
+                    onClick={onGitHubSignIn}
+                    className="mt-4 w-full flex items-center justify-center gap-2 bg-white text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-gray-100 transition duration-300 border border-gray-300"
+                >
+                    <FaGithub />
+                    Continue with GitHub
+                </button>
+            </div>
 
             <div className="flex justify-center mt-4">
                 <button
