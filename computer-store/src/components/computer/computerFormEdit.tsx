@@ -4,7 +4,7 @@ import { CldUploadWidget, CldImage } from 'next-cloudinary';
 import SubmitButton from './SubmitButton';
 import { useCallback, useState, useTransition } from 'react';
 import { ComputerDocument, PartialComputer } from '@/models/computerModel';
-import { updateComputer } from '@/app/actions/computerAction';
+import { updateComputer } from '@/actions/computerAction';
 import { useRouter } from 'next/navigation';
 
 export default function ComputerFormEdit({ computer }: { computer?: ComputerDocument }) {

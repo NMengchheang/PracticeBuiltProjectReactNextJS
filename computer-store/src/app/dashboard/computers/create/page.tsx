@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from 'react';
-import { createComputers } from '@/app/actions/computerAction';
+import { createComputers } from '@/actions/computerAction';
 import { CldImage, CldUploadWidget } from 'next-cloudinary';
 import SubmitButton from '@/components/computer/SubmitButton';
 

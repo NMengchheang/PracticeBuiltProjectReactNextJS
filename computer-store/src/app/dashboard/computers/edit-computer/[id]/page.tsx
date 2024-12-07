@@ -1,4 +1,4 @@
-import { getComputerById } from "@/app/actions/computerAction";
+import { getComputerById } from "@/actions/computerAction";
 import ComputerFormEdit from "@/components/computer/computerFormEdit";
 import { notFound } from "next/navigation";
 

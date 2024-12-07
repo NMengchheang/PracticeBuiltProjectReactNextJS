@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { deleteComputer } from "@/app/actions/computerAction";
+import { deleteComputer } from "@/actions/computerAction";
 import { useRouter } from "next/navigation";
 
 export default function DeleteComputerButton({ id } : { id: string}){ 

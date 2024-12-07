@@ -1,4 +1,4 @@
-import { getComputerById } from '@/app/actions/computerAction';
+import { getComputerById } from '@/actions/computerAction';
 import ComputerDetails from '@/components/computer/computerDetails'
 import { notFound } from 'next/navigation';
 
