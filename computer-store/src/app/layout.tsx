@@ -4,6 +4,7 @@ import "./globals.css";
 import Script from "next/script";
 import SessionWrapper from "@/components/Sessionwrapper";
 import { connectToMongoDB } from "@/lib/db";
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -55,6 +56,10 @@ export default function PageLayout({
             `
             }
           </Script>
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+          />
         </body>
       </html>
     </SessionWrapper>

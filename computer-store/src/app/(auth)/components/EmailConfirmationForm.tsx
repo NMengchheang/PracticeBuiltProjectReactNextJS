@@ -1,24 +1,26 @@
 import { subscribe } from "@/actions/subscribe";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useFormStatus } from "react-dom";
+import { AiOutlineLoading3Quarters } from "react-icons/ai"; // Import spinner icon
+import { toast } from "react-hot-toast";
 
 export default function EmailConfirmationForm() {
     const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const { pending } = useFormStatus();
     
     const handleSubmit = async (formData: FormData) => {
 
         setError(null);
-        setLoading(true);
         
         const { error, data } = await subscribe(formData);
 
-        setLoading(false);
-
         if (error) {
             setError(error);
+            toast.error(error);
         } else {
+            toast.success(data as string);
             console.log(data);
             router.push('/subscriber/pending')
             // alert("Check your email to confirm.");
@@ -49,17 +51,29 @@ export default function EmailConfirmationForm() {
                 </div>
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-between">
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className= { `w-full bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ${loading ? "opacity-50" : ""}`}
-                        >
-                            {loading ? "Submitting..." : "Sign In"}
-                        </button>
-                    </div>
-                    <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-                        Forgot Password?
-                    </a>
+                    <button
+                        type="submit"
+                        disabled={pending}
+                        className={`w-full bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ${
+                            pending ? "opacity-50 cursor-not-allowed" : ""
+                        }`}
+                    >
+                        {pending ? (
+                            <div className="flex items-center justify-center space-x-2">
+                                <AiOutlineLoading3Quarters className="animate-spin" />
+                                <span>Submitting...</span>
+                            </div>
+                        ) : (
+                            "Submit"
+                        )}
+                    </button>
+                </div>
+                <a
+                    className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 mt-2 text-center"
+                    href="#"
+                >
+                    Forgot Password?
+                </a>
                 </div>
             </form>
         </>

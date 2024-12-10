@@ -1,4 +1,3 @@
- 
 const SignInPage = () => {
     return (
         <div className="mt-5 flex items-center justify-center w-full h-full space-y-4 flex-col">

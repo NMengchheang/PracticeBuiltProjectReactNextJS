@@ -41,7 +41,7 @@ export const subscribe = async (formData: FormData): Promise<RetVal<string>> => 
         return { error: 'Failed to process subscription'};
     }
     
-    const link = `${process.env.NEXT_PUBLIC_BASE_URL}/confirm?token/${token}`;
+    const link = `${process.env.NEXT_PUBLIC_BASE_URL}/subscriber/confirm?token/${token}`;
     const res = await sendConfirmationEmail(validatedEmail, link);
     
     if (res?.error) {
