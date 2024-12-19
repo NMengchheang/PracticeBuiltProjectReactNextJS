@@ -1,4 +1,4 @@
-import { auth } from '@/service/Authservices';
+import { auth } from '@/lib/auth/Authservices';
 import HeaderClient from './ClientHeader';
 
 async function HeaderServer() {

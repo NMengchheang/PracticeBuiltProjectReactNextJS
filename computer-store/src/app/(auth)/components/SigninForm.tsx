@@ -1,21 +1,20 @@
 "use client";
 
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { IoChevronBackOutline } from "react-icons/io5";
 import EmailConfirmationForm from "./EmailConfirmationForm";
+import { signIn } from "next-auth/react";
+import { handlerGoogleSignIn } from "@/lib/auth/googleSignInServerAction";
 
 export default function SigninForm() {
     const router = useRouter();
 
-    const onGoogleSignIn = () => {
-        signIn('google');
+    const handlerGitHubSignIn = () => {
+        signIn('github', { redirectTo: '/' });
     }
-    const onGitHubSignIn = () => {
-        signIn('github');
-    }
-
+    
     return (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
 
@@ -29,16 +28,17 @@ export default function SigninForm() {
                     OR
                 </span>
             </div>
+            
             <div>
                 <button
-                    onClick={onGoogleSignIn}
+                    onClick={() => handlerGoogleSignIn()}
                     className="w-full flex items-center justify-center gap-2 bg-white text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-gray-100 transition duration-300 border border-gray-300"
                 >
-                    <FaGoogle />
+                    <FcGoogle />
                     Continue with Google
                 </button>
                 <button
-                    onClick={onGitHubSignIn}
+                    onClick={handlerGitHubSignIn}
                     className="mt-4 w-full flex items-center justify-center gap-2 bg-white text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-gray-100 transition duration-300 border border-gray-300"
                 >
                     <FaGithub />

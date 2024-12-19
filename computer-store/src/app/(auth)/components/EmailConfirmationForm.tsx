@@ -29,6 +29,10 @@ export default function EmailConfirmationForm() {
 
     return (
         <>
+            <div className="text-center mt-4 mb-4">
+                <h1 className="font-semibold text-3xl">Login Form</h1>
+            </div>
+
             <form action={handleSubmit}>
                 {
                     error && (

@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { auth } from "@/service/Authservices";
+// import { auth } from "@/lib/auth/Authservices";
 
 const protectedRoutes = [
     '/Testing',
-    '/backends'
+    '/dashboard',
+    '/signout'
 ]
 
 const publicRoutes = [
@@ -13,19 +14,19 @@ const publicRoutes = [
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
-    const session = await auth();
+    // const session = await auth();
     
     const isProtectedRoute = protectedRoutes.some((prefix) => 
         request.nextUrl.pathname.startsWith(prefix)
     );
 
-    if (!session && isProtectedRoute) {
-        return NextResponse.redirect(new URL('/signin', request.nextUrl.origin));
-    }
+    // if (!session && isProtectedRoute) {
+    //     return NextResponse.redirect(new URL('/signin', request.nextUrl.origin));
+    // }
 
-    if (session && publicRoutes.includes(request.nextUrl.pathname)) {
-        return NextResponse.redirect(new URL('/', request.nextUrl.origin));
-    }
+    // if (session && publicRoutes.includes(request.nextUrl.pathname)) {
+    //     return NextResponse.redirect(new URL('/dashboard', request.nextUrl.origin));
+    // }
 }
 
 export const config = {

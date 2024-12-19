@@ -17,7 +17,6 @@ export const getSubscriberByToken = async (token: string) => {
     });
 }
 
-
 export const updateSubscriberToVerified = async (id: string) => {
     return await prisma.subscriber.update({
         where: {

@@ -1,9 +1,5 @@
 "use server";
-import { signIn, signOut } from "@/service/Authservices";
-
-export const signOutUser = async () => {
-    await signOut();
-};
+import { signIn, signOut } from "@/lib/auth/Authservices";
 
 export const signInByCredencails = async (email: string, password: string, redirect: boolean=false) => {
     try {

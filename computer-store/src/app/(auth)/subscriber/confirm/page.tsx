@@ -14,6 +14,7 @@ export default async function ConfirmPage({searchParams} : ConfirmPageProps) {
         throw new Error("Invalid token");
     }
     await updateSubscriberToVerified(existingSubscriber.xata_id);
+    
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
             <div className="max-w-md w-full p-8 bg-white rounded-xl shadow-lg text-center">

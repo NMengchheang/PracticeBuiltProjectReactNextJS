@@ -6,8 +6,8 @@ import {
   Preview, 
   Body, 
   Container, 
-  Text, 
-  Link } from "@react-email/components";
+  Text,
+} from "@react-email/components";
 
 export default function ConfirmationEmail({link}: {link: string}) {
   return (
